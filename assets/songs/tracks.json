@@ -1,0 +1,38 @@
+[
+    {
+        "name": "XKCD",
+        "track": 110
+    },
+    {
+        "name": "SoundCloud",
+        "track": 140
+    },
+    {
+        "name": "Flickr",
+        "track": 110
+    },
+    {
+        "name": "TED",
+        "track": 110
+    },
+    {
+        "name": "The Verge",
+        "track": 110
+    },
+    {
+        "name": "Viddler",
+        "track": 110
+    },
+    {
+        "name": "The AV Club",
+        "track": 110
+    },
+    {
+         "name": "Wired",
+        "track": 110
+    },
+    {
+           "name": "The Onion",
+        "track": 110
+    } 
+]

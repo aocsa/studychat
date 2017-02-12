@@ -1,0 +1,57 @@
+<dom-module id="poly-app">
+	<template>
+		<paper-drawer-panel>
+			<div drawer>
+				<paper-menu selected="{{selected}}">
+					<paper-icon-item>
+						<paper-ripple></paper-ripple>
+						<iron-icon icon="av:play-circle-filled" item-icon></iron-icon> My Music
+					</paper-icon-item>
+					<paper-icon-item>
+						<paper-ripple></paper-ripple>
+						<iron-icon icon="av:library-music" item-icon></iron-icon> Poly Music
+					</paper-icon-item>
+					<paper-icon-item>
+						<paper-ripple></paper-ripple>
+						<iron-icon icon="social:group" item-icon></iron-icon> Users
+					</paper-icon-item>
+					<paper-icon-item>
+						<paper-ripple></paper-ripple>
+						<iron-icon icon="icons:polymer" item-icon></iron-icon> About the app
+					</paper-icon-item>
+				</paper-menu>
+			</div>
+			<div main>
+				<iron-pages selected="{{selected}}">
+					<section>
+						<poly-user-music></poly-user-music>
+					</section>
+					<section>
+						<poly-daily-music></poly-daily-music>
+					</section>
+					<section>
+						<poly-users></poly-users>
+					</section>
+					<section>
+						<poly-about-app></poly-about-app>
+					</section>
+				</iron-pages>
+			</div>
+		</paper-drawer-panel>
+		<poly-player id="poly-player"></poly-player>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'poly-app',
+			properties: {
+				selected: {
+					type: Number,
+					value: 1
+				}
+			},
+			ready: function() {
+			}
+		});
+	</script>
+</dom-module>
