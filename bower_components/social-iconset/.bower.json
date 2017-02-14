@@ -1,0 +1,40 @@
+{
+  "name": "social-iconset",
+  "authors": [
+    "7Ds7 <dinisimoes@gmail.com>"
+  ],
+  "description": "social icons as Polymer iconset element",
+  "main": "social-iconset.html",
+  "keywords": [
+    "icons",
+    "social",
+    "polymer",
+    "iconset",
+    "web-components"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/7Ds7/social-iconset",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.5.0",
+    "iron-icon": "^1.0.8",
+    "iron-iconset-svg": "^1.0.9"
+  },
+  "version": "0.0.5",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.5",
+    "commit": "8fc07431153524f626b38a5f182b7b1e17817468"
+  },
+  "_source": "https://github.com/7Ds7/social-iconset.git",
+  "_target": "^0.0.5",
+  "_originalSource": "social-iconset",
+  "_direct": true
+}

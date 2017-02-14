@@ -1,20 +1,35 @@
 <dom-module id="poly-login">
   <template>
-    <iron-ajax id="ajax" method="POST" url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+  <style>
+     #login {
+       display: block;
+
+       max-height: 100vh;
+       /* Keep overflow visible so vaadin-date-picker dropdown won't clip */
+       overflow: visible;
+     }
+
+
+       #login {
+
+         overflow-y: scroll;
+       }
+
+     </style>
     <paper-button data-dialog="login" raised>Login</paper-button>
 
     <paper-dialog id="login" role="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
       <h2>Login</h2>
       <paper-dialog-scrollable>
-        <paper-input name="username" value="{{user.username}}" error-message="Please write username" type="email" required label="Username" id="inputWithButton">
-          <iron-icon icon="account-box" prefix></iron-icon>
+         <paper-input name="email" value="{{user.email}}" error-message="Please write email" type="email" required label="Email" id="inputWithButton">
+          <iron-icon icon="icons:drafts" prefix></iron-icon>
         </paper-input>
 
         <paper-input name="password" value="{{user.password}}" error-message="Please write your password" required type="password" label="Password" id="inputWithButton">
           <iron-icon icon="lock" prefix></iron-icon>
         </paper-input>
-      </paper-dialog-scrollable>
-      <div class="buttons">
+      <paper-dialog-scrollable>
+       <div class="buttons">
         <paper-button on-click="login">Login</paper-button>
       </div>
     </paper-dialog>
@@ -42,39 +57,21 @@
           Parse.initialize("864978ada6235f558ec04dd5e3200e07c6bb1553");
           Parse.serverURL = 'http://52.225.216.48:80/parse';
 
-          //Object {email: "aocsa.cs@gmail.com", password: "nextlimit123"}
-
-          Parse.User.logIn(this.user.username, this.user.password, {
-            success: function(res) {
+          Parse.User.logIn(this.user.email, this.user.password, {
+            success: function(user) {
               // Do stuff after successful login.
-              sessionStorage.setItem('id', res.id);
-              sessionStorage.setItem('token', Parse.User.current().getSessionToken());
-              window.location = '/poly-master/home.html';
+              sessionStorage.setItem('id', user.id);
+              sessionStorage.setItem('token', user.getSessionToken());
+              window.location = '/studychat/home.html';
 
             },
             error: function(user, error) {
               // The login failed. Check error to see why.
-              alert("Error: " + error.code + " " + error.message);
-
+              log.console("Error: " + error.code + " " + error.message);
+              inputs[i].focus();
             }
           });
-
-          //this.$.ajax.url = "http://localhost/api/api.php?action=login";
-          //this.$.ajax.params = this.user;
-
-
-
-          //this.$.ajax.generateRequest();
   			}
-      },
-      handleResponse: function(res) {
-        var res = res.detail.response;
-        if(res) {
-          sessionStorage.setItem('id', res.id);
-          sessionStorage.setItem('email', res.email)
-          sessionStorage.setItem('token', res.token);
-          window.location = '/poly-master/home.html';
-        }
       }
     });
   </script>

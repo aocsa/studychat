@@ -40,6 +40,8 @@
     "iron-list": "PolymerElements/iron-list#^1.2.3",
     "paper-progress": "PolymerElements/paper-progress#^1.0.8",
     "paper-spinner": "PolymerElements/paper-spinner#^1.1.0",
-    "paper-tooltip": "PolymerElements/paper-tooltip#^1.1.1"
+    "paper-tooltip": "PolymerElements/paper-tooltip#^1.1.1",
+    "vaadin-combo-box": "^1.2.0",
+    "paper-dropdown-menu": "^1.5.0"
   }
 }
