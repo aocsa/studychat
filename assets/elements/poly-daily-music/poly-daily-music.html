@@ -1,6 +1,8 @@
 <dom-module id="poly-daily-music">
   <template>
+
     <iron-ajax id="ajax" url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+
     <paper-spinner active$="{{spinnerShow}}"></paper-spinner>
     <div class="layout horizontal wrap">
       <template is="dom-repeat" items="{{artists}}">
@@ -65,7 +67,7 @@
           songs: []
         };
 
-        this.$.ajax.url = "http://localhost/poly-master/assets/songs/songs.json";
+        this.$.ajax.url = "assets/songs/songs.json";
         this.$.ajax.generateRequest();
 
       },

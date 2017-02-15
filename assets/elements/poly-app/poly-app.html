@@ -5,6 +5,11 @@
 				<paper-menu selected="{{selected}}">
 					<paper-icon-item>
 						<paper-ripple></paper-ripple>
+						<iron-icon icon="icons:polymer" item-icon></iron-icon> Timeline
+					</paper-icon-item>
+
+					<paper-icon-item>
+						<paper-ripple></paper-ripple>
 						<iron-icon icon="av:play-circle-filled" item-icon></iron-icon> My Music
 					</paper-icon-item>
 					<paper-icon-item>
@@ -15,14 +20,17 @@
 						<paper-ripple></paper-ripple>
 						<iron-icon icon="social:group" item-icon></iron-icon> Users
 					</paper-icon-item>
-					<paper-icon-item>
-						<paper-ripple></paper-ripple>
-						<iron-icon icon="icons:polymer" item-icon></iron-icon> About the app
-					</paper-icon-item>
+
 				</paper-menu>
 			</div>
-			<div main>
+
+
+            <div main>
 				<iron-pages selected="{{selected}}">
+					<section>
+						<poly-timeline></poly-timeline>
+					</section>
+
 					<section>
 						<poly-user-music></poly-user-music>
 					</section>
@@ -32,12 +40,13 @@
 					<section>
 						<poly-users></poly-users>
 					</section>
-					<section>
-						<poly-about-app></poly-about-app>
-					</section>
+
 				</iron-pages>
 			</div>
 		</paper-drawer-panel>
+
+		<expense-editor id="expenseEditor" ></expense-editor>
+
 		<poly-player id="poly-player"></poly-player>
 	</template>
 
@@ -50,8 +59,22 @@
 					value: 1
 				}
 			},
-			ready: function() {
-			}
+            listeners: {
+                'edit-expense': '_editExpense',
+                'expenses-updated': '_expensesUpdated',
+                'expense-saved': '_saveExpense',
+                'delete-expense': '_deleteExpense'
+            },
+
+            ready: function() {
+
+			},
+            _editExpense: function(evt) {
+                if (evt && evt.detail) {
+                    var expense = evt.detail;
+                    this.$.expenseEditor.open(expense);
+                }
+            },
 		});
 	</script>
 </dom-module>

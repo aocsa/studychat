@@ -30,12 +30,9 @@
       ready: function(){
         this.users = [];
 
-        this.$.ajax.url = "http://localhost/api/api.php?action=get_all_users";
-        this.$.ajax.params = {
-          userId: sessionStorage.getItem('id'),
-          token: sessionStorage.getItem('token')
-        };
-        this.$.ajax.generateRequest();
+          this.$.ajax.url = "assets/songs/songs.json";
+
+          this.$.ajax.generateRequest();
       },
       handleResponse: function(res) {
         this.users = res.detail.response;

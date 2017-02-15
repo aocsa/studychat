@@ -9,10 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!doctype html>
-<html id="html">
+<html>
 <head>
 
-  <title>Collapsable items using iron-list</title>
+  <title>Collapsible items using iron-list</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no">
@@ -29,8 +29,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../../paper-styles/typography.html">
   <link rel="import" href="../../iron-ajax/iron-ajax.html">
   <link rel="import" href="../../iron-icons/iron-icons.html">
+  <link rel="import" href="../../iron-image/iron-image.html">
   <link rel="import" href="../iron-list.html">
-  
+
   <style>
     body {
       background-color: #eee;
@@ -45,7 +46,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        display: block; 
+        display: block;
         @apply(--paper-font-common-base);
       }
 
@@ -54,6 +55,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
         font-weight: bold;
         color: white;
+        font-size: 18px;
         z-index: 1;
         position: fixed;
         top: 0;
@@ -144,16 +146,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-ajax url="data/contacts.json" last-response="{{items}}" auto></iron-ajax>
 
     <app-toolbar>
-      <div title>Collapsable items</div>
+      <div main-title>Collapsible items</div>
       <paper-icon-button icon="search" alt="Search"></paper-icon-button>
       <paper-icon-button icon="more-vert" alt="More options"></paper-icon-button>
     </app-toolbar>
 
-    <iron-list id="list" items="[[items]]" as="item" scroll-target="html" selection-enabled multi-selection>
+    <iron-list id="list" items="[[items]]" as="item" selection-enabled multi-selection>
       <template>
         <div>
           <div class$="[[getClassForItem(item, selected)]]" tabindex$="[[tabIndex]]">
-            <img class="avatar" src="[[item.image]]">
+            <iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>
             <div class="pad">
               <div class="primary">[[item.name]]</div>
               <div class="shortText">[[item.shortText]]</div>
@@ -182,6 +184,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         },
 
+        attached: function() {
+          // Use the document element
+          this.$.list.scrollTarget = this.ownerDocument.documentElement;
+        },
+
         iconForItem: function(item) {
           return item ? (item.integer < 50 ? 'star-border' : 'star') : '';
         },
@@ -189,6 +196,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         getClassForItem: function(item, selected) {
           return selected ? 'item expanded' : 'item';
         }
+
       });
 
     });
